@@ -38,18 +38,18 @@ void mostrarMenu(){
     cout << "------- MENU -------\n";
     cout << "1 - Cadastrar curso.\n";
     cout << "2 - Cadastrar aluno.\n";
-    cout << "3 - Listar cursos.\n";
-    cout << "4 - Listar alunos.\n";
-    cout << "5 - Buscar alunos por curso.\n";
-    cout << "6 - Relatorio Geral.\n";
-    cout << "7 - Salvar cursos (binario).\n";
-    cout << "8 - Carregar cursos (binario).\n";
-    cout << "9 - Salvar alunos (binario).\n";
+    cout << "3 - Cadastrar professor.\n ";
+    cout << "4 - Listar cursos.\n";
+    cout << "5 - Listar alunos.\n";
+    cout << "6 - Listar professor.\n";
+    cout << "7 - Buscar alunos por curso.\n";
+    cout << "8 - Relatorio Geral.\n";
+    cout << "9 - Carregar cursos (binario).\n";
     cout << "10 - Carregar alunos (binario).\n";
-    cout << "11 - Cadastrar professor.\n";
-    cout << "12 - Listar professores.\n";
+    cout << "11 - Carregar professores (binario).\n";
+    cout << "12 - Salvar alunos (binario).\n";
     cout << "13 - Salvar professores (binario).\n";
-    cout << "14 - Carregar professores (binario).\n";
+    cout << "14 - Salvar cursos (binario).\n";
     cout << "0 - Sair.\n";
 }
 
@@ -281,7 +281,7 @@ void cadastrarProfessor(Professor *p){
     cin.ignore();
     cout << "Nome do professor: ";
     cin.getline(p->nome, 100);
-    cout << "Disciplina que leciona: ";
+    cout << "Disciplina: ";
     cin.getline(p->disciplina, 100);
 }
 
@@ -375,12 +375,19 @@ int main() {
                 adicionarAlunos(vetorAlunos, alunosFacul);
                 break;
             case 3:
-                listarCurso(vetorCursos);
+                cadastrarProfessor(&prof);
+                adicionarProfessor(vetorProf, prof);
                 break;
             case 4:
-                listarAluno(vetorAlunos);
+                listarCurso(vetorCursos);
                 break;
             case 5:
+                listarAluno(vetorAlunos);
+                break;
+            case 6:
+                listarProfessor(vetorProf);
+                break;
+            case 7:
                 {
                     int buscaAluno;
                     cout << "Digite o codigo da disciplina: ";
@@ -388,35 +395,26 @@ int main() {
                     buscarAluno(buscaAluno, vetorAlunos);
                 }
                 break;
-            case 6:
+            case 8:
                 relatorioGeral(vetorCursos);
                 break;
-
-            case 7:
-                salvarCursosBin(vetorCursos);
-                break;
-            case 8:
-                carregarCursosBin(vetorCursos);
-                break;
             case 9:
-                salvarAlunosBin(vetorAlunos);
+                carregarCursosBin(vetorCursos);
                 break;
             case 10:
                 carregarAlunosBin(vetorAlunos);
                 break;
-
             case 11:
-                cadastrarProfessor(&prof);
-                adicionarProfessor(vetorProf, prof);
+                carregarProfessoresBin(vetorProf);
                 break;
             case 12:
-                listarProfessor(vetorProf);
+                salvarAlunosBin(vetorAlunos);
                 break;
             case 13:
                 salvarProfessoresBin(vetorProf);
                 break;
             case 14:
-                carregarProfessoresBin(vetorProf);
+                salvarCursosBin(vetorCursos);
                 break;
 
             default:
